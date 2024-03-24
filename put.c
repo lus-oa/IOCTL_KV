@@ -45,7 +45,7 @@ struct data
 void print_header(struct header *hdr)
 {
     printf("===========Header Information===========\n");
-    uint32_t total_length = hdr->total_length & ~(1 << 31);
+    uint32_t total_length = hdr->total_length ;
     printf("Header Information:\n");
     printf("Total Length: %.2f KB, %u Byte\n", (float)total_length / 1024, total_length);
     printf("Key: 0x%lX\n", hdr->key);
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
     uint8_t num_segments = (total_length + max_data - 1) / max_data;
 
     // 填充头部信息
-    hdr->total_length = total_length | (1 << 31); // 将 total_length 的最高位设置为 1，表示这是一个头部
+    hdr->total_length = total_length; // 将 total_length 的最高位设置为 1，表示这是一个头部
     hdr->key = key;                               // 这里填写你自己指定的KEY值
     hdr->num_segments = num_segments;
     print_header(hdr);
