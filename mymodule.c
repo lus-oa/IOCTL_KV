@@ -74,7 +74,7 @@ static long my_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
             if (hdr->total_length & (1 << 31))
             {
                 printk(KERN_INFO "Received header:\n");
-                printk(KERN_INFO "Total Length: %u\n", hdr->total_length & ~(1 << 31));
+                printk(KERN_INFO "Total Length: %u\n", hdr->total_length );
                 printk(KERN_INFO "Key: 0x%llX\n", hdr->key);
                 printk(KERN_INFO "Number of Segments: %hhu\n", hdr->num_segments);
             }
